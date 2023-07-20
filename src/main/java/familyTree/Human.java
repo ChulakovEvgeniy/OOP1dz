@@ -10,8 +10,8 @@ public class Human {
     private LocalDate birthdate;
     private Gender gender;
 
-    Human father;
-    Human mather;
+    private Human father;
+    private Human mather;
 
     List<Human> children = new ArrayList<>();
 
