@@ -1,6 +1,7 @@
 package familyTree;
 
 public class Main {
+//    На момент написания дз урок2 не смотрел
     public static void main(String[] args) {
         Human human1 = new Human("Евгений","Чулаков","Игоревич",
                 1995,11,05,Gender.Male);
