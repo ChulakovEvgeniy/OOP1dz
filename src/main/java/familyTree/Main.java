@@ -1,19 +1,41 @@
 package familyTree;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
+import java.util.List;
+
 public class Main {
 //    На момент написания дз урок2 не смотрел
     public static void main(String[] args) {
-        Human human1 = new Human("Евгений","Чулаков","Игоревич",
-                1995,11,05,Gender.Male);
-        Human human2 = new Human("Игорь","Чулаков","Иванович",
-                1971,12,27,Gender.Male);
-        Human human3 = new Human("Ольга","Чулакова","Игоревна",
-                2005,02,05,Gender.Female);
-        human1.setFather(human2);
-        human3.setFather(human2);
-        System.out.println(human1);
-        System.out.println(human1.getFather());
-        System.out.println(human2.getChildren());
+        Human evgeniy = new Human("Евгений","Чулаков","Игоревич",
+                LocalDate.of(1995,11,05),Gender.Male);
+        Human igor = new Human("Игорь","Чулаков","Иванович",
+                LocalDate.of(1971,12,27),Gender.Male);
+        Human helga = new Human("Ольга","Чулакова","Игоревна",
+                LocalDate.of(2005,02,05),Gender.Female);
+        Human vitaliy = new Human("Виталий","Рула","Федорович",
+                LocalDate.of(1956,02,3), LocalDate.of(2021,12,2),Gender.Male);
+        Human natalya = new Human("Наталья","Чулакова","Александровна",
+                LocalDate.of(1972,12,30),Gender.Female);
+        evgeniy.setFather(igor);
+        natalya.addChild(evgeniy);
+        helga.setFather(igor);
+        igor.setFather(vitaliy);
+        evgeniy.setMather(natalya);
+        FamilyTRee fam = new FamilyTRee();
+        List<String> familys = fam.printfam(evgeniy);
+        familys.add(fam.printfam(evgeniy.getFather1()).toString());
 
+        for (String family: familys){
+            System.out.println(family);
+        }
+        try {
+            Save save = new Save(familys);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
