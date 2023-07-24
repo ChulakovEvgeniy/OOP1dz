@@ -6,6 +6,7 @@ import java.util.List;
 public class FamilyTRee {
     List<String> famTree = new ArrayList<>();
         public List printfam(Human human){
+
             famTree.add(0,"");
 
             famTree.add(0,human.toString1());
@@ -17,4 +18,5 @@ public class FamilyTRee {
             }
                 return famTree;
         }
+
 }

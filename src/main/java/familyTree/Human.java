@@ -2,7 +2,6 @@ package familyTree;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.Year;
 import java.util.*;
 
 public class Human {
@@ -10,10 +9,8 @@ public class Human {
     private LocalDate birthdate;
     private LocalDate dathData;
     private Gender gender;
-
     private Human father;
     private Human mather;
-
     private List<Human> children = new ArrayList<>();
 
     public Human(String firstname,String lastName,String patronymic, LocalDate birthdate,LocalDate dathData,Gender gender, Human father, Human mather) {
@@ -108,8 +105,10 @@ public class Human {
 
     public String toString1(){
         if (dathData !=null){
-            return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: "+ birthdate+", д/c: "+ dathData+", отец: " + father + ", мать: " + mather;
-        }return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: "+ birthdate+", пол: "+ gender+", отец: " + father + ", мать: " + mather;
+            return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", " +
+                    "д/р: "+ birthdate+", д/c: "+ dathData+", пол: "+ gender+", отец: " + father + ", мать: " + mather;
+        }return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: " +
+                ""+ birthdate+", пол: "+ gender+", отец: " + father + ", мать: " + mather;
     }
 
     @Override

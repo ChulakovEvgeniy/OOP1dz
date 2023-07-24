@@ -26,8 +26,9 @@ public class Main {
         evgeniy.setMather(natalya);
         FamilyTRee fam = new FamilyTRee();
         List<String> familys = fam.printfam(evgeniy);
-        familys.add(String.valueOf(fam.printfam(evgeniy.getFather1())));
-//Когда один уровень родителей нет масива в выводе, а когда добавляю родителей у родителей печатается внизу массив
+        fam.printfam(evgeniy.getFather1());
+        fam.printfam(evgeniy.getMather1());
+        fam.printfam(evgeniy.getFather1().getFather1());
 //        for (String family: familys){
 //            System.out.println(family);
 //        }
@@ -39,6 +40,7 @@ public class Main {
         for (Object person: gg){
             System.out.println(person);
         }
+
 
 
 
