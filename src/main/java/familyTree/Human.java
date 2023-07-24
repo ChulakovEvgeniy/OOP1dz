@@ -83,6 +83,7 @@ public class Human {
     }
     public List<Human> getChill(){
         List<Human> chill = new ArrayList<>();
+        chill.addAll(this.children);
         return chill;
     }
     public String getAge(){
@@ -107,8 +108,8 @@ public class Human {
 
     public String toString1(){
         if (dathData !=null){
-            return (String)name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: "+ birthdate+", д/c: "+ dathData+", отец:" + father + ", мать: " + mather;
-        }return (String)name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: "+ birthdate+", пол:"+ gender+", отец:" + father + ", мать: " + mather;
+            return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: "+ birthdate+", д/c: "+ dathData+", отец: " + father + ", мать: " + mather;
+        }return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: "+ birthdate+", пол: "+ gender+", отец: " + father + ", мать: " + mather;
     }
 
     @Override

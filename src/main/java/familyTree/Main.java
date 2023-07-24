@@ -3,11 +3,12 @@ package familyTree;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 //    На момент написания дз урок2 не смотрел
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         Human evgeniy = new Human("Евгений","Чулаков","Игоревич",
                 LocalDate.of(1995,11,05),Gender.Male);
         Human igor = new Human("Игорь","Чулаков","Иванович",
@@ -25,17 +26,21 @@ public class Main {
         evgeniy.setMather(natalya);
         FamilyTRee fam = new FamilyTRee();
         List<String> familys = fam.printfam(evgeniy);
-        familys.add(fam.printfam(evgeniy.getFather1()).toString());
+        familys.add(String.valueOf(fam.printfam(evgeniy.getFather1())));
+//Когда один уровень родителей нет масива в выводе, а когда добавляю родителей у родителей печатается внизу массив
+//        for (String family: familys){
+//            System.out.println(family);
+//        }
 
-        for (String family: familys){
-            System.out.println(family);
+        Save save = new Save(familys);
+        ReadFamily rd = new ReadFamily();
+        List gg = new ArrayList<>();
+        rd.ReadFam("ss", gg);
+        for (Object person: gg){
+            System.out.println(person);
         }
-        try {
-            Save save = new Save(familys);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
+
+
+
     }
 }
