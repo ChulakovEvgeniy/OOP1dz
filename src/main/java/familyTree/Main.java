@@ -1,5 +1,6 @@
 package familyTree;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -33,9 +34,9 @@ public class Main {
 //        for (String family: familys){
 //            System.out.println(family);
 //        }
-
-        SaveAndRead save = new SaveAndRead();
-        save.save(familys);
+        File file = new File("person.out");
+        SaveAndRead save = new SaveAndRead(file);
+//        save.save(familys);
 
         save.read();
 //        ReadFamily rd = new ReadFamily();

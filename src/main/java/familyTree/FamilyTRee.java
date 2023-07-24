@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FamilyTRee implements Serializable {
-    List<String> famTree = new ArrayList<>();
+        private List<String> famTree;
+        public FamilyTRee() {
+            this.famTree = new ArrayList<>();
+        }
         public List printfam(Human human){
 
             famTree.add(0,"");

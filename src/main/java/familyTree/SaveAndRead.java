@@ -4,7 +4,12 @@ import java.io.*;
 import java.util.List;
 
 public class SaveAndRead implements Serializable {
-private File file = new File("person.out");
+    private File file;
+
+    public SaveAndRead(File file) {
+        this.file = file;
+    }
+
     public void save(List<Human> list) throws IOException {
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(
