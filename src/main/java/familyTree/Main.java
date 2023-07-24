@@ -1,6 +1,7 @@
 package familyTree;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class Main {
 //    На момент написания дз урок2 не смотрел
-    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void main(String[] args) throws IOException {
         Human evgeniy = new Human("Евгений","Чулаков","Игоревич",
                 LocalDate.of(1995,11,05),Gender.Male);
         Human igor = new Human("Игорь","Чулаков","Иванович",
@@ -25,7 +26,7 @@ public class Main {
         igor.setFather(vitaliy);
         evgeniy.setMather(natalya);
         FamilyTRee fam = new FamilyTRee();
-        List<String> familys = fam.printfam(evgeniy);
+        List<Human> familys = fam.printfam(evgeniy);
         fam.printfam(evgeniy.getFather1());
         fam.printfam(evgeniy.getMather1());
         fam.printfam(evgeniy.getFather1().getFather1());
@@ -33,13 +34,17 @@ public class Main {
 //            System.out.println(family);
 //        }
 
-        Save save = new Save(familys);
-        ReadFamily rd = new ReadFamily();
-        List gg = new ArrayList<>();
-        rd.ReadFam("ss", gg);
-        for (Object person: gg){
-            System.out.println(person);
-        }
+        SaveAndRead save = new SaveAndRead();
+        save.save(familys);
+
+        save.read();
+//        ReadFamily rd = new ReadFamily();
+//        List gg = new ArrayList<>();
+//        rd.ReadFam("ss", gg);
+//        for (Object person: gg){
+//            System.out.println(person);
+//        }
+
 
 
 

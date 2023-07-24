@@ -1,9 +1,10 @@
 package familyTree;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyTRee {
+public class FamilyTRee implements Serializable {
     List<String> famTree = new ArrayList<>();
         public List printfam(Human human){
 

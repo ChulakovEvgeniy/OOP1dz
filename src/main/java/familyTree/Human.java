@@ -1,10 +1,11 @@
 package familyTree;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
-public class Human {
+public class Human implements Serializable {
     private Map name;
     private LocalDate birthdate;
     private LocalDate dathData;
