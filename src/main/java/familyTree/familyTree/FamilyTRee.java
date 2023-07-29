@@ -15,12 +15,18 @@ public class FamilyTRee implements Serializable,Iterable<Human> {
             this.famTree = new ArrayList<>();
         }
         public void addfam(Human human){
-            famTree.add(0,human);
-            if (human.getFather() != null){
-                famTree.add(0,human.getFather());
+            if (!famTree.contains(human)){
+                famTree.add(0,human);
             }
-            if (human.getMather() != null){
-                famTree.add(0,human.getMather());
+            if (!famTree.contains(human.getFather())) {
+                if (human.getFather() != null) {
+                    famTree.add(0, human.getFather());
+                }
+            }
+            if (!famTree.contains(human.getMather())) {
+                if (human.getMather() != null) {
+                    famTree.add(0, human.getMather());
+                }
             }
 
         }
