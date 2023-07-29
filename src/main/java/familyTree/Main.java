@@ -1,18 +1,19 @@
 package familyTree;
 
+import familyTree.SaveAndRead.SaveAndRead;
+import familyTree.familyTree.FamilyTRee;
+import familyTree.human.Gender;
+import familyTree.human.Human;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 //    На момент написания дз урок2 не смотрел
     public static void main(String[] args) throws IOException {
         Human evgeniy = new Human("Евгений","Чулаков","Игоревич",
-                LocalDate.of(1995,11,05),Gender.Male);
+                LocalDate.of(1995,11,05), Gender.Male);
         Human igor = new Human("Игорь","Чулаков","Иванович",
                 LocalDate.of(1971,12,27),Gender.Male);
         Human helga = new Human("Ольга","Чулакова","Игоревна",
@@ -27,24 +28,18 @@ public class Main {
         igor.setFather(vitaliy);
         evgeniy.setMather(natalya);
         FamilyTRee fam = new FamilyTRee();
-        List<Human> familys = fam.printfam(evgeniy);
-        fam.printfam(evgeniy.getFather1());
-        fam.printfam(evgeniy.getMather1());
-        fam.printfam(evgeniy.getFather1().getFather1());
-//        for (String family: familys){
-//            System.out.println(family);
-//        }
+        fam.addfam(evgeniy);
+        fam.addfam(evgeniy.getFather());
+        fam.addfam(evgeniy.getMather());
+
         File file = new File("person.out");
         SaveAndRead save = new SaveAndRead(file);
-//        save.save(familys);
+        save.save(fam, String.valueOf(file));
+        FamilyTRee tree = (FamilyTRee) save.read(file.toString());
+        System.out.println(tree);
+        tree.sortByAge();
+        System.out.println(tree);
 
-        save.read();
-//        ReadFamily rd = new ReadFamily();
-//        List gg = new ArrayList<>();
-//        rd.ReadFam("ss", gg);
-//        for (Object person: gg){
-//            System.out.println(person);
-//        }
 
 
 

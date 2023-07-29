@@ -1,11 +1,11 @@
-package familyTree;
+package familyTree.human;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
-public class Human implements Serializable {
+public class Human implements Serializable,Comparable<Human> {
     private Map name;
     private LocalDate birthdate;
     private LocalDate dathData;
@@ -36,13 +36,20 @@ public class Human implements Serializable {
         father.children.add(this);
         this.father = father;
     }
-    public String getFather(){
-        return father.toString();
+    public String getFatherInfo(){
+        String info = ", отец: ";
+        Human father = getFather();
+        if (father != null){
+            info += father.toStringInfo();
+        }else {
+            info += "неизвестно";
+        }
+        return info;
     }
-    public Human getFather1(){
+    public Human getFather(){
         return father;
     }
-    public Human getMather1(){
+    public Human getMather(){
         return mather;
     }
     public void setMather(Human mather){
@@ -51,8 +58,15 @@ public class Human implements Serializable {
             this.mather = mather;
         }
     }
-    public String getMather(){
-        return mather.toString();
+    public String getMatherInfo(){
+        String info = ", мать: ";
+        Human mather = getMather();
+        if (mather != null){
+            info += mather.toStringInfo();
+        }else {
+            info += "неизвестно";
+        }
+        return info;
     }
     public void addChild(Human children) {
         if (!(this.children.contains(children))){
@@ -97,19 +111,26 @@ public class Human implements Serializable {
         return age1;
     }
     @Override
-    public String toString() {
+    public String toString(){
+        return toString1();
+    }
+    public String toStringInfo() {
         if(dathData != null){
-            return (String)name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+" умер в " + getAge() + " лет";
+            return (String)name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+" умер в " + getAge() + " лет ";
         }
-        return (String)name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+" " + getAge() + " лет";
+        return (String)name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+" " + getAge() + " лет ";
     }
 
     public String toString1(){
+        StringBuilder sb = new StringBuilder();
         if (dathData !=null){
-            return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", " +
-                    "д/р: "+ birthdate+", д/c: "+ dathData+", пол: "+ gender+", отец: " + father + ", мать: " + mather;
-        }return (String)"ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: " +
-                ""+ birthdate+", пол: "+ gender+", отец: " + father + ", мать: " + mather;
+            sb.append("ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", " +
+                    "д/р: "+ birthdate+", д/c: "+ dathData+", пол: "+ gender+ getFatherInfo() + getMatherInfo());
+        }else {
+            sb.append("ФИО: "+name.get("Фамилия")+" "+ name.get("Имя")+" " + name.get("Отчество")+", д/р: " +
+                    ""+ birthdate+", пол: "+ gender+ getFatherInfo()+ getMatherInfo());
+        }
+        return sb.toString();
     }
 
     @Override
@@ -122,5 +143,13 @@ public class Human implements Serializable {
         }
         Human human = (Human) obj;
         return human.name.values().equals(name.values()) && human.birthdate.isEqual(birthdate);
+    }
+    public String getName(){
+        return (String) name.get("Имя");
+    }
+
+    @Override
+    public int compareTo(Human o) {
+        return 0;
     }
 }
