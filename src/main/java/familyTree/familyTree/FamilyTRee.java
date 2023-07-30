@@ -1,33 +1,30 @@
 package familyTree.familyTree;
 
-import familyTree.human.Human;
-import familyTree.human.HumanIterator;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTRee implements Serializable, Iterable<Human> {
-    private List<Human> famTree;
+public class FamilyTRee<E extends FamilyTreeItem> implements Serializable, Iterable<E> {
+    private List<E> famTree;
 
     public FamilyTRee() {
         this.famTree = new ArrayList<>();
     }
 
-    public void addfam(Human human) {
-        if (!famTree.contains(human)) {
-            famTree.add(0, human);
+    public void addfam(E person) {
+        if (!famTree.contains(person)) {
+            famTree.add(0, person);
         }
-        if (!famTree.contains(human.getFather())) {
-            if (human.getFather() != null) {
-                famTree.add(0, human.getFather());
+        if (!famTree.contains(person.getFather())) {
+            if (person.getFather() != null) {
+                famTree.add(0, person.getFather());
             }
         }
-        if (!famTree.contains(human.getMather())) {
-            if (human.getMather() != null) {
-                famTree.add(0, human.getMather());
+        if (!famTree.contains(person.getMather())) {
+            if (person.getMather() != null) {
+                famTree.add(0, person.getMather());
             }
         }
 
@@ -35,8 +32,8 @@ public class FamilyTRee implements Serializable, Iterable<Human> {
 
     public String getInfo() {
         StringBuilder sb = new StringBuilder();
-        for (Human human : famTree) {
-            sb.append(human);
+        for (E person : famTree) {
+            sb.append(person);
             sb.append("\n");
         }
         return sb.toString();
@@ -48,15 +45,15 @@ public class FamilyTRee implements Serializable, Iterable<Human> {
     }
 
     @Override
-    public Iterator<Human> iterator() {
-        return new HumanIterator(famTree);
+    public Iterator<E> iterator() {
+        return new EntityIterator<>(famTree);
     }
 
     public void sortByName() {
-        famTree.sort((Comparator<? super Human>) new HumanComparatorByName());
+        famTree.sort((Comparator<? super E>) new ComparatorByName());
     }
 
     public void sortByAge() {
-        famTree.sort((Comparator<? super Human>) new HumanComparatorByAge());
+        famTree.sort((Comparator<? super E>) new ComparatorByAge());
     }
 }
