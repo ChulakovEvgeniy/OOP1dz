@@ -7,8 +7,8 @@ public interface FamilyTreeItem {
     String getFatherInfo();
 
     //    <T> getFather();
-//    <T> getMather();
-//    void setMather();
+    //    <T> getMather();
+    //    void setMather();
     String getMatherInfo();
 
     //    void addChild();
