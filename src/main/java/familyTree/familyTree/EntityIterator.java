@@ -7,9 +7,6 @@ public class EntityIterator<E extends FamilyTreeItem> implements Iterator<E> {
     private int index;
     private List<E> entityList;
 
-//    public HumanIterator(List<E> humanList) {
-//        this.humanList = humanList;
-//    }
 
     public EntityIterator(List<E> entityList) {
         this.entityList = entityList;
