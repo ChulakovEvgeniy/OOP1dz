@@ -18,6 +18,10 @@ public class Service {
         familyTRee = new FamilyTRee<>();
         saveAndRead = new SaveAndRead();
     }
+    public Service(FamilyTRee<Human> familyTRee, File file){
+        this.familyTRee = familyTRee;
+        saveAndRead = new SaveAndRead(file);
+    }
     public void addHuman(String firstname, String lastName, String patronymic, LocalDate birthdate, LocalDate dathData,
                          Gender gender, Human father, Human mather){
         Human human = new Human(firstname,lastName, patronymic, birthdate,dathData, gender, father, mather);

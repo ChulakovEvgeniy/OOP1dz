@@ -1,6 +1,8 @@
 package presenter;
 
+import model.familyTree.FamilyTRee;
 import model.human.Gender;
+import model.human.Human;
 import model.service.Service;
 import view.View;
 
@@ -44,7 +46,7 @@ public class Presenter {
     }
 
     public void read(String name) {
-        Service service1 = (Service) service.read(new File(name));
+        Service service1 = new Service((FamilyTRee<Human>) service.read(new File(name)),new File(name));
 //        Не могу понять что я тут делаю не так
     }
 }
