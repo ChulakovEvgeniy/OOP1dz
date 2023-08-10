@@ -44,6 +44,6 @@ public class Presenter {
     }
 
     public void read(String name) {
-        service.read(new File(name));
+        Service service1 = (Service) service.read(new File(name));
     }
 }

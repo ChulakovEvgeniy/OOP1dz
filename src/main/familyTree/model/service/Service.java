@@ -48,7 +48,7 @@ public class Service {
     public boolean save(File file){
         return saveAndRead.save(familyTRee, String.valueOf(file));
     }
-    public boolean read(File file){
-        return (boolean) saveAndRead.read(String.valueOf(file));
+    public Object read(File file){
+        return saveAndRead.read(String.valueOf(file));
     }
 }
