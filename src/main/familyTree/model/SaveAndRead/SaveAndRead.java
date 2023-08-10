@@ -1,4 +1,4 @@
-package familyTree.SaveAndRead;
+package model.SaveAndRead;
 
 import java.io.*;
 
@@ -7,6 +7,9 @@ public class SaveAndRead implements Writable {
 
     public SaveAndRead(File file) {
         this.file = file;
+    }
+    public SaveAndRead(){
+
     }
 
 //    public void save(List<Human> list) throws IOException {

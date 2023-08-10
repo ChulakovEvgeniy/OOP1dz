@@ -1,4 +1,4 @@
-package familyTree.familyTree;
+package model.familyTree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,14 +17,14 @@ public class FamilyTRee<E extends FamilyTreeItem> implements Serializable, Itera
         if (!famTree.contains(person)) {
             famTree.add(0, person);
         }
-        if (!famTree.contains(person.getFather())) {
+        if (!famTree.contains((E) person.getFather())) {
             if (person.getFather() != null) {
-                famTree.add(0, person.getFather());
+                famTree.add(0, (E) person.getFather());
             }
         }
-        if (!famTree.contains(person.getMather())) {
+        if (!famTree.contains((E) person.getMather())) {
             if (person.getMather() != null) {
-                famTree.add(0, person.getMather());
+                famTree.add(0, (E) person.getMather());
             }
         }
 
@@ -53,7 +53,7 @@ public class FamilyTRee<E extends FamilyTreeItem> implements Serializable, Itera
         famTree.sort((Comparator<? super E>) new ComparatorByName());
     }
 
-    public void sortByAge() {
-        famTree.sort((Comparator<? super E>) new ComparatorByAge());
+    public void sortByBirthdate() {
+        famTree.sort((Comparator<? super E>) new ComparatorByBirthdate());
     }
 }

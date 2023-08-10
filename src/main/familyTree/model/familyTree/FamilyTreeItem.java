@@ -1,13 +1,11 @@
-package familyTree.familyTree;
+package model.familyTree;
 
-import familyTree.human.Human;
+import java.time.LocalDate;
 
-public interface FamilyTreeItem {
+public interface FamilyTreeItem<E> {
     //    void setFather();
     String getFatherInfo();
 
-    //    <T> getFather();
-    //    <T> getMather();
     //    void setMather();
     String getMatherInfo();
 
@@ -19,11 +17,13 @@ public interface FamilyTreeItem {
     //    List<T> getChill();
     String getAge();
 
-    <E extends FamilyTreeItem> E getFather();
+    E getFather();
 
-    <E extends FamilyTreeItem> E getMather();
+    E getMather();
 
     int compareTo();
 
     String getName();
+
+    LocalDate getBirthdate();
 }

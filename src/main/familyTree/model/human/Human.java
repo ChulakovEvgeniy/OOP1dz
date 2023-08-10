@@ -1,13 +1,13 @@
-package familyTree.human;
+package model.human;
 
-import familyTree.familyTree.FamilyTreeItem;
+import model.familyTree.FamilyTreeItem;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
-public class Human implements Serializable, Comparable<Human>, FamilyTreeItem {
+public class Human implements Serializable, Comparable<Human>, FamilyTreeItem<Human> {
     private Map name;
     private LocalDate birthdate;
     private LocalDate dathData;
@@ -174,5 +174,9 @@ public class Human implements Serializable, Comparable<Human>, FamilyTreeItem {
     @Override
     public int compareTo(Human o) {
         return 0;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
     }
 }

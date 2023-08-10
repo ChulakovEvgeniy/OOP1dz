@@ -1,4 +1,4 @@
-package familyTree.SaveAndRead;
+package model.SaveAndRead;
 
 import java.io.Serializable;
 
