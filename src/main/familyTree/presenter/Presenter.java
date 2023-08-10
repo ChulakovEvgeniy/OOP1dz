@@ -45,5 +45,6 @@ public class Presenter {
 
     public void read(String name) {
         Service service1 = (Service) service.read(new File(name));
+//        Не могу понять что я тут делаю не так
     }
 }
