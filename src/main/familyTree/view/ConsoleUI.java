@@ -131,6 +131,7 @@ public class ConsoleUI implements View{
     }
 
     public void change(){
+        getHumanInfo();
         System.out.println("Введите номер записи");
         String index = scanner.nextLine();
         Human human = presenter.change(index);
