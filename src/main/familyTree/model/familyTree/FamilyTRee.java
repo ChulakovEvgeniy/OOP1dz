@@ -1,5 +1,7 @@
 package model.familyTree;
 
+import model.human.Human;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,20 +31,14 @@ public class FamilyTRee<E extends FamilyTreeItem> implements Serializable, Itera
         }
 
     }
-
-    public String getInfo() {
-        StringBuilder sb = new StringBuilder();
-        for (E person : famTree) {
-            sb.append(person);
-            sb.append("\n");
+    public Human change(Integer index){
+        if (index == 0){
+            return (Human) famTree.get(0);
+        }else {
+            return (Human) famTree.get(index-1);
         }
-        return sb.toString();
     }
 
-    @Override
-    public String toString() {
-        return getInfo();
-    }
 
     @Override
     public Iterator<E> iterator() {
@@ -55,5 +51,17 @@ public class FamilyTRee<E extends FamilyTreeItem> implements Serializable, Itera
 
     public void sortByBirthdate() {
         famTree.sort((Comparator<? super E>) new ComparatorByBirthdate());
+    }
+    public String getInfo() {
+        StringBuilder sb = new StringBuilder();
+        for (E person : famTree) {
+            sb.append(person);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+    @Override
+    public String toString() {
+        return getInfo();
     }
 }

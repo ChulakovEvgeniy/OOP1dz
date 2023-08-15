@@ -17,11 +17,14 @@ public class Presenter {
         this.view = view;
         service = new Service();
     }
+    public Presenter(Service service) {
+        this.service = service;
+    }
 
     public void addHuman(String firstname, String lastName, String patronymic, LocalDate birthdate, LocalDate dathData, Gender gender) {
         service.addHuman(firstname,lastName,patronymic,birthdate,dathData,gender);
 
-        getHumanInfo();
+        view.printAnswer("Запись успешно добавлена");
     }
 
     public void getHumanInfo() {
@@ -46,7 +49,21 @@ public class Presenter {
     }
 
     public void read(String name) {
-        Service service1 = new Service((FamilyTRee<Human>) service.read(new File(name)),new File(name));
-//        Не могу понять что я тут делаю не так
+       service.read(name);
+    }
+
+    public Human change(String indexStr) {
+        Integer index = Integer.parseInt(indexStr);
+        return service.change(index);
+
+    }
+    public void addFather(Human human, Human father){
+        human.setFather(father);
+    }
+    public void addMather(Human human,Human mather){
+        human.setMather(mather);
+    }
+    public void addDathData(Human human,LocalDate dathdata){
+        human.setDathData(dathdata);
     }
 }

@@ -15,12 +15,12 @@ public class Service {
 
     public Service() {
 
-        familyTRee = new FamilyTRee<>();
+        familyTRee = new FamilyTRee<Human>();
         saveAndRead = new SaveAndRead();
     }
-    public Service(FamilyTRee<Human> familyTRee, File file){
+    public Service(FamilyTRee<Human> familyTRee){
         this.familyTRee = familyTRee;
-        saveAndRead = new SaveAndRead(file);
+        saveAndRead = new SaveAndRead();
     }
     public void addHuman(String firstname, String lastName, String patronymic, LocalDate birthdate, LocalDate dathData,
                          Gender gender, Human father, Human mather){
@@ -34,7 +34,9 @@ public class Service {
     }
     public String getHumanInfo() {
         StringBuilder sb = new StringBuilder();
+        int i =1;
         for (Human human : familyTRee) {
+            sb.append(i++ + ". ");
             sb.append(human);
             sb.append("\n");
         }
@@ -52,7 +54,12 @@ public class Service {
     public boolean save(File file){
         return saveAndRead.save(familyTRee, String.valueOf(file));
     }
-    public Object read(File file){
-        return saveAndRead.read(String.valueOf(file));
+    public void read(String file){
+        this.familyTRee = ((FamilyTRee) saveAndRead.read(file));
+
+    }
+
+    public Human change(Integer index) {
+        return familyTRee.change(index);
     }
 }

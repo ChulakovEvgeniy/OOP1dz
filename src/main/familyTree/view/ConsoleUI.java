@@ -107,15 +107,11 @@ public class ConsoleUI implements View{
     }
 
     public void save(){
-        System.out.println("Введите имя файла");
-        String name = scanner.nextLine();
-        name +=".out";
+        String name = inputFile("Введите имя файла");
         presenter.save(name);
     }
     public void read(){
-        System.out.println("Введите имя файла");
-        String name = scanner.nextLine();
-        name +=".out";
+        String name = inputFile("Введите имя файла");
         presenter.read(name);
     }
 
@@ -125,5 +121,50 @@ public class ConsoleUI implements View{
         }else {
             return Gender.Female;
         }
+    }
+
+    public String inputFile(String mesage){
+        System.out.println(mesage);
+        String name = scanner.nextLine();
+        name += ".out";
+        return name;
+    }
+
+    public void change(){
+        System.out.println("Введите номер записи");
+        String index = scanner.nextLine();
+        Human human = presenter.change(index);
+        boolean databool = true;
+        while (databool){
+        System.out.println("что имеено вы хотите изменить или добавить в запись?\n" +
+                "1. Поле отца\n" +
+                "2. Поле матери\n" +
+                "3. Дату смерти\n" +
+                "4. выйти из редакотора записи");
+        String data = scanner.nextLine();
+            switch (data){
+                case "1":
+                    addHuman();
+                    presenter.addFather(human,presenter.change("0"));
+                    break;
+                case "2":
+                    addHuman();
+                    presenter.addMather(human,presenter.change("0"));
+                    break;
+                case  "3":
+                    presenter.addDathData(human, LocalDate.parse(scanner.nextLine()));
+                    break;
+                case  "4":
+                    databool = false;
+                    break;
+                default:
+                    System.out.println("Некоректный вод");
+            }
+        }
+
+    }
+
+    public void exit(boolean bo){
+        this.work = bo;
     }
 }

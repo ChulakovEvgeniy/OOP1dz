@@ -68,6 +68,10 @@ public class Human implements Serializable, Comparable<Human>, FamilyTreeItem<Hu
         }
     }
 
+    public void setDathData(LocalDate dathData){
+        this.dathData = dathData;
+    }
+
     public String getMatherInfo() {
         String info = ", мать: ";
         Human mather = getMather();

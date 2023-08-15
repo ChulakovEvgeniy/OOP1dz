@@ -6,7 +6,7 @@ public class GetHumanInfo extends Command{
 
     public GetHumanInfo(ConsoleUI consoleUI) {
         super(consoleUI);
-        description = "Получить список семеного древа";
+        description = "Получить список семейного древа";
     }
 
     @Override
