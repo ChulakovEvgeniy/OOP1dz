@@ -51,12 +51,11 @@ public class Service {
         familyTRee.sortByBirthdate();
     }
 
-    public boolean save(File file){
+    public boolean save(String file){
         return saveAndRead.save(familyTRee, String.valueOf(file));
     }
-    public void read(String file){
-        this.familyTRee = ((FamilyTRee) saveAndRead.read(file));
-
+    public Object read(String file){
+        return this.familyTRee = ((FamilyTRee) saveAndRead.read(file));
     }
 
     public Human change(Integer index) {

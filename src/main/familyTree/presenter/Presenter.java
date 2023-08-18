@@ -45,7 +45,7 @@ public class Presenter {
     }
 
     public void save(String name) {
-        service.save(new File(name));
+        service.save(name);
     }
 
     public void read(String name) {

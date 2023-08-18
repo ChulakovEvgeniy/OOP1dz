@@ -145,25 +145,39 @@ public class ConsoleUI implements View{
         String data = scanner.nextLine();
             switch (data){
                 case "1":
-                    addHuman();
-                    presenter.addFather(human,presenter.change("0"));
+                    addFather(human);
                     break;
                 case "2":
-                    addHuman();
-                    presenter.addMather(human,presenter.change("0"));
+                    addMather(human);
                     break;
                 case  "3":
-                    presenter.addDathData(human, LocalDate.parse(scanner.nextLine()));
+                    changeDathData(human);
                     break;
                 case  "4":
                     databool = false;
                     break;
                 default:
-                    System.out.println("Некоректный вод");
+                    inputError();
+                    break;
             }
         }
 
     }
+
+    public void addFather(Human human){
+        addHuman();
+        presenter.addFather(human,presenter.change("0"));
+    }
+     public void addMather(Human human){
+         addHuman();
+         presenter.addMather(human,presenter.change("0"));
+     }
+
+     public void changeDathData(Human human){
+         System.out.println("Введите дату смерти(гггг-мм-дд)");
+         presenter.addDathData(human, LocalDate.parse(scanner.nextLine()));
+     }
+
 
     public void exit(boolean bo){
         this.work = bo;
