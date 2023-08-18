@@ -1,6 +1,7 @@
 package model.service;
 
 import model.SaveAndRead.SaveAndRead;
+import model.SaveAndRead.Writable;
 import model.familyTree.FamilyTRee;
 import model.human.Gender;
 import model.human.Human;
@@ -10,17 +11,17 @@ import java.time.LocalDate;
 
 public class Service {
     private FamilyTRee<Human> familyTRee;
-    private SaveAndRead saveAndRead;
+    private Writable writable;
     private File file;
 
     public Service() {
 
         familyTRee = new FamilyTRee<Human>();
-        saveAndRead = new SaveAndRead();
+        this.writable = new SaveAndRead();
     }
     public Service(FamilyTRee<Human> familyTRee){
         this.familyTRee = familyTRee;
-        saveAndRead = new SaveAndRead();
+        this.writable = new SaveAndRead();
     }
     public void addHuman(String firstname, String lastName, String patronymic, LocalDate birthdate, LocalDate dathData,
                          Gender gender, Human father, Human mather){
@@ -52,10 +53,10 @@ public class Service {
     }
 
     public boolean save(String file){
-        return saveAndRead.save(familyTRee, String.valueOf(file));
+        return writable.save(familyTRee, String.valueOf(file));
     }
     public Object read(String file){
-        return this.familyTRee = ((FamilyTRee) saveAndRead.read(file));
+        return this.familyTRee = ((FamilyTRee) writable.read(file));
     }
 
     public Human change(Integer index) {
